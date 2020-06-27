@@ -9,7 +9,7 @@ import com.algaworks.algafood.api.AlgafoodApiRestApplication;
 import com.algaworks.algafood.api.domain.model.Cozinha;
 import com.algaworks.algafood.api.domain.repository.CozinhaRepository;
 
-public class BuscaCozinhaMain {
+public class AlteracaoCozinhaMain {
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiRestApplication.class)
 				.web(WebApplicationType.NONE)
@@ -17,9 +17,13 @@ public class BuscaCozinhaMain {
 		
 		CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
 		
-		Cozinha cozinha = cozinhaRepository.porId(1L);
 		
-			System.out.println(cozinha.getNome());
+		Cozinha cozinha = new Cozinha();
+		cozinha.setId(1L);
+		cozinha.setNome("Brasileira");
+		
+		cozinhaRepository.adicionar(cozinha);
+		
 		}
 		
 	}
