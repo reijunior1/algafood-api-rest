@@ -12,7 +12,7 @@ import com.algaworks.algafood.api.domain.model.Estado;
 import com.algaworks.algafood.api.domain.repository.EstadoRepositoy;
 
 @Component
-public class EstadoRepositoryImpl implements EstadoRepository {
+public class EstadoRepositoryImpl implements EstadoRepositoy {
 
 	@PersistenceContext
 	private EntityManager manager;
@@ -29,8 +29,7 @@ public class EstadoRepositoryImpl implements EstadoRepository {
 	}
 	
 	@Transactional
-	@Override
-	public Estado salvar(Estado estado) {
+	@Override 
 		return manager.merge(estado);
 	}
 	
@@ -40,6 +39,5 @@ public class EstadoRepositoryImpl implements EstadoRepository {
 		estado = buscar(estado.getId());
 		manager.remove(estado);
 	}
-	
-	
+
 }
